@@ -5,31 +5,31 @@ using namespace std;
 
 class A {
 public:
-    virtual void getTypeInfo() {
-        cout << "This is an instance of class A" << endl;
+    virtual string getTypeInfo() {
+        return "This is an instance of class A";
     }
 };
 
 class B: public A {
 public:
-    void getTypeInfo() {
-        cout << "This is an instance of class B" << endl;
+    string getTypeInfo() {
+        return "This is an instance of class B";
     }
 };
 
 class C: public B {
 public:
-    void getTypeInfo() {
-        cout << "This is an instance of class C" << endl;
+    string getTypeInfo() {
+        return "This is an instance of class C";
     }
 };
 
 void printObjectTypeInfo1(A* object) {
-    object -> getTypeInfo();
+    cout << object -> getTypeInfo() << endl;
 }
 
 void printObjectTypeInfo2(A& object) {
-    object.getTypeInfo();
+    cout << object.getTypeInfo() << endl;
 }
 
 int main() {

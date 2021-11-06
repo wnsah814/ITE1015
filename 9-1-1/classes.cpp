@@ -5,24 +5,24 @@ using namespace std;
 class A {
 public:
     virtual ~A() {}
-    virtual void test() {
-        cout << "A::test()" << endl;
+    virtual string test() {
+        return "A::test()";
     }
 };
 
 class B : public A {
 public: 
     ~B() {}
-    void test() {
-        cout << "B::test()" << endl;
+    string test() {
+        return "B::test()";
     }
 };
 
 class C: public B {
 public:
     ~C() {}
-    void test() {
-        cout << "C::test()" << endl;
+    string test() {
+        return "C::test()";
     }
 };
 
@@ -33,7 +33,7 @@ int main() {
     v.push_back(new C);
 
     for (int i = 0; i < v.size(); i++) {
-        v[i] -> test();
+        cout << v[i] -> test() << endl;
     }
     for (int i = 0; i < v.size(); i++) {
         delete v[i];
