@@ -1,2 +1,2 @@
 # ITE1015
-Cretive Software Design @ Hanyang Univ.
+Creative Software Design @ Hanyang Univ.
