@@ -9,7 +9,7 @@ int main() {
   char command;
   cin >> command;
   while (command != '0') {
-    int width, height;
+    double width, height;
     if (command == 'r') {
       cin >> width >> height;
       arr.push_back(new Rectangle(width, height));
