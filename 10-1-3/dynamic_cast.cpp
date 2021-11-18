@@ -43,10 +43,11 @@ int main() {
         C* cptr = dynamic_cast<C*>(arr[i]);
         if (cptr) {
             cptr -> test_C();
-        }
-        D* dptr = dynamic_cast<D*>(arr[i]);
-        if (dptr) {
-            dptr -> test_D();
+        } else {
+            D* dptr = dynamic_cast<D*>(arr[i]);
+            if (dptr) {
+                dptr -> test_D();
+            } 
         }
     }
 
