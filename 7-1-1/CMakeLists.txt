@@ -1,0 +1,1 @@
+add_executable(sorted_array main.cpp intset.cpp)
