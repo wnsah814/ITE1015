@@ -33,9 +33,9 @@ void AccountManager::newAcc(int id) {
     arr[id] = Account(id, 0);
 }
 void AccountManager::deposit(int id, int val) {
-    int ori_val = arr[id].Account::getBal();
+    int ori_val = arr[id].getBal();
     if (ori_val + val <= 1000000) {
-        arr[id].Account::addBal(val);
+        arr[id].addBal(val);
         cout << "Success: Deposit to user " << id << " " << val << endl;
     } else {
         cout << "Failure: Deposit to user " << id << " " << val << endl;
@@ -43,9 +43,9 @@ void AccountManager::deposit(int id, int val) {
 }
 
 void AccountManager::withdraw(int id, int val) {
-    int ori_val = arr[id].Account::getBal();
+    int ori_val = arr[id].getBal();
     if (ori_val - val >= 0) {
-        arr[id].Account::addBal(-1*val);
+        arr[id].addBal(-1*val);
         cout << "Success: Withdraw from user " << id << " " << val << endl;
     } else {
         cout << "Failure: Withdraw from user " << id << " " << val << endl;
@@ -54,11 +54,11 @@ void AccountManager::withdraw(int id, int val) {
 }
 
 void AccountManager::transfer(int id1, int id2, int val) {
-    int ori_val1 = arr[id1].Account::getBal();
-    int ori_val2 = arr[id2].Account::getBal();
+    int ori_val1 = arr[id1].getBal();
+    int ori_val2 = arr[id2].getBal();
     if (ori_val1 - val >= 0 && ori_val2 + val <= 1000000) {
-        arr[id1].Account::addBal(-1*val);
-        arr[id2].Account::addBal(val);
+        arr[id1].addBal(-1*val);
+        arr[id2].addBal(val);
         cout << "Success: Transfer from user " << id1 << " to user " << id2 << " " << val << endl;
     } else {
         cout << "Failure: Transfer from user " << id1 << " to user " << id2 << " " << val << endl;
@@ -67,5 +67,5 @@ void AccountManager::transfer(int id1, int id2, int val) {
 }
 
 void AccountManager::check(int id) const {
-    cout << "Balance of user " << id << ": " << arr[id].Account::getBal() << endl;
+    cout << "Balance of user " << id << ": " << arr[id].getBal() << endl;
 }
