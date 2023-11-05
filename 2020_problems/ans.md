@@ -4,7 +4,7 @@
 2. F
 3. F
 4. T
-5. X
+5. F
 6. T
 7. F
 8. T
@@ -89,12 +89,14 @@ A, D
 2. Inside Q
 3. 0 5
 4.
+
 - Parent Child
 - ~Child ~Parent
 - Parent Child Test
 - ~Test ~Child ~Parent
 
 ### 10번
+
 ```c++
 #include <iostream>
 using namespace std;
@@ -124,6 +126,7 @@ int main() {
 ```
 
 ### 11번
+
 40
 
 50
@@ -133,9 +136,11 @@ int main() {
 40
 
 ### 12번
+
 65 66
 
 ### 13번
+
 ```c++
 #include <iostream>
 #include <string>
@@ -169,7 +174,9 @@ class MotorCycle : public Vehicle {
         _wheels[i].weight = 2.0;
       }
     }
-    ~MotorCycle() { };
+    ~MotorCycle() {
+      delete[] _wheels;
+    };
     double getWeight() { return _weight + 2 * _wheels[0].weight; }
 };
 
@@ -184,7 +191,7 @@ class Truck : public Vehicle {
         _wheels[i].weight = 40.0;
       }
     }
-    ~Truck() { 
+    ~Truck() {
       delete[] _wheels;
     }
     void addLoad(double weight) { _loadWeight += weight; }
@@ -205,7 +212,9 @@ int main() {
   return 0;
 }
 ```
+
 ### 14번
+
 a (2, 3)
 
 (2, 3)
@@ -215,12 +224,15 @@ b (1, 2)
 (2, 3)
 
 ### 15번
+
 C
 
 ### 16번
+
 error
 
 ### 17번
+
 ```c++
 #include <iostream>
 #include <string>

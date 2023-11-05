@@ -30,7 +30,9 @@ class MotorCycle : public Vehicle {
         _wheels[i].weight = 2.0;
       }
     }
-    ~MotorCycle() { };
+    ~MotorCycle() { 
+      delete[] _wheels;
+    };
     double getWeight() { return _weight + 2 * _wheels[0].weight; }
 };
 
