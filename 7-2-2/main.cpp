@@ -3,7 +3,6 @@
 #include <set>
 #include "setfunc.h"
 
-//#include "setfunc.h"
 using namespace std;
 
 int main() {
