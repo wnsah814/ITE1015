@@ -6,7 +6,6 @@
 //#include "setfunc.h"
 using namespace std;
 
-
 int main() {
     string input;
     while (true) {
@@ -17,8 +16,8 @@ int main() {
         size_t firstCloseIndex = input.find("}", firstOpenIndex);
         size_t secondOpenIndex = input.find("{", firstCloseIndex);
         size_t secondCloseIndex = input.find("}", secondOpenIndex);
-        string first = input.substr(firstOpenIndex + 2, firstCloseIndex - firstOpenIndex-3);
-        string second = input.substr(secondOpenIndex + 2, secondCloseIndex - secondOpenIndex - 3);
+        string first = input.substr(firstOpenIndex + 2, firstCloseIndex - firstOpenIndex-2);
+        string second = input.substr(secondOpenIndex + 2, secondCloseIndex - secondOpenIndex - 2);
         set<int> s0 = parseSet(first);
         set<int> s1 = parseSet(second);
         set<int> resultSet;
