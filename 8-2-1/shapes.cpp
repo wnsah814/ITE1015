@@ -1,4 +1,6 @@
 #include "shapes.h"
+#define ABS(x) (((x)<0)?(-(x)):(x))
+
 using namespace std;
 
 Shape::Shape() {
@@ -10,8 +12,6 @@ Shape::Shape(int topFirstX, int topFirstY, char brush) {
     _topFirstY = topFirstY;
     _brush = brush;
 }
-
-//Shape 메소드 필요한가?
 
 Rectangle::Rectangle(int topLeftX, int topLeftY, int width, int height, char brush):
     Shape(topLeftX, topLeftY, brush) {
@@ -29,14 +29,14 @@ int Rectangle::GetPerimeter() {
 
 void Rectangle::Draw(int canvas_width, int canvas_height) {
     cout << " ";
-    for (int i = 0; i < canvas_width; i++) {
-        cout << i;
+    for (int x = 0; x < canvas_width; x++) {
+        cout << x;
     } cout << endl;
 
-    for (int i = 0; i < canvas_height; i++) {
-        cout << i;
-        for (int j = 0; j < canvas_width; j++) {
-            if (i >= _topFirstY && j >= _topFirstX && j < _topFirstX + _width && i < _topFirstY + _height) {
+    for (int y = 0; y < canvas_height; y++) {
+        cout << y;
+        for (int x = 0; x < canvas_width; x++) {
+            if (y >= _topFirstY && x >= _topFirstX && x < _topFirstX + _width && y < _topFirstY + _height) {
                 cout << _brush;
             }
             else {
@@ -62,14 +62,14 @@ int Square::GetPerimeter() {
 
 void Square::Draw(int canvas_width, int canvas_height) {
     cout << " ";
-    for (int i = 0; i < canvas_width; i++) {
-        cout << i;
+    for (int x = 0; x < canvas_width; x++) {
+        cout << x;
     } cout << endl;
 
-    for (int i = 0; i < canvas_height; i++) {
-        cout << i;
-        for (int j = 0; j < canvas_width; j++) {
-            if (i >= _topFirstY && j >= _topFirstX && j < _topFirstX + _length && i < _topFirstY + _length) {
+    for (int y = 0; y < canvas_height; y++) {
+        cout << y;
+        for (int x = 0; x < canvas_width; x++) {
+            if (y >= _topFirstY && x >= _topFirstX && x < _topFirstX + _length && y < _topFirstY + _length) {
                 cout << _brush;
             }
             else {
@@ -87,7 +87,7 @@ Diamond::Diamond(int topCenterX, int topCenterY, int distance, char brush):
 }
 
 double Diamond::GetArea() {
-    return _distance*2 * _distance*2 / 2;
+    return _distance * 2 * _distance * 2 / 2;
 }   
 
 int Diamond::GetPerimeter() {
@@ -99,33 +99,20 @@ void Diamond::Draw(int canvas_width, int canvas_height) {
     for (int i = 0; i < canvas_width; i++) {
         cout << i;
     } cout << endl;
-    int counter = 0;
-    int check = 0;
-    int startDecrease = 0;
-    for (int i = 0; i < canvas_height; i++) {
-        cout << i;
-        for (int j = 0; j < canvas_width; j++) {
-            if (i >= _topFirstY && i <= _topFirstY + 2 * _distance && j >= _topFirstX - counter && j <= _topFirstX + counter) {
+
+    int mx = _topFirstX, my = _topFirstY + _distance;
+    int dx, dy;
+    for (int y = 0; y < canvas_height; ++y) {
+        cout << y;
+        for (int x = 0; x < canvas_width; ++x) {
+            dx = ABS(mx-x);
+            dy = ABS(my-y);
+            if (dx + dy <= _distance) {
                 cout << _brush;
-                check = 1;
-            }
-            else {
+            } else {
                 cout << ".";
-            }   
-        }
-        if (check == 1) {
-            if (startDecrease == 0) {
-                if (counter < _distance) {
-                    counter++;
-                } else {
-                    startDecrease = 1;
-                }
             }
-            if (startDecrease == 1) {
-                counter--;
-            }
-            check == 0;
         }
-        cout << endl;
+        cout << "\n";
     }
 }
